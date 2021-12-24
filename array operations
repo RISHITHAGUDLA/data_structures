@@ -1,0 +1,79 @@
+#include<stdio.h>
+void lsearch(int *,int ,int );
+void deletion(int *,int *);
+void insertion(int *,int *);
+void reverse(int *,int *);
+void main()
+{
+    int a[20],key,n,i,j,t;
+    printf("enter the size of array");
+    scanf("%d",&n);
+    printf("enter elemnts into array");
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    printf("enter the element to search");
+    scanf("%d",&key);
+    lsearch(a,n,key);
+     insertion(a,&n);
+    deletion(a,&n);
+    reverse(a,&n);
+
+}
+void lsearch(int a[],int n,int key)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        if(a[i]==key)
+        {
+        printf("element found\n");
+        break;
+        }
+    }
+    printf("element not found\n");
+}
+void deletion(int a[],int *n)
+{
+    int k,i;
+    printf("\nenter the element to delete");
+    scanf("%d",&k);
+    for(i=0;i<*n;i++)
+    {
+        if(a[i]==k)
+        {
+            for(int j=i;j>0;j--)
+              a[j]=a[j-1];
+        }
+    }
+     printf("elements after deletion are");
+    for(i=1;i<*n;i++)
+      printf("%d ",a[i]);
+    
+}
+void insertion(int a[],int *n)
+{
+    int p,key,i;
+    *n=*n+1;
+    printf("\nenter the element and the position to be inserted");
+    scanf("%d%d",&key,&p);
+    for(i=*n-1;i>p;i--)
+      a[i]=a[i-1];
+    a[p]=key;
+    printf("elemts after insertion are:");
+    for(i=0;i<*n;i++) 
+      printf("%d ",a[i]); 
+}
+void reverse(int a[],int *n)
+{
+    int *p,t,i;
+    p=a;
+    for(i=0;i<((*n)/2);i++)
+    {
+        t=*(p+i);
+        *(p+i)=*(p+(*n-1)-i);
+        *(p+(*n-1)-i)=t;
+    }
+    printf("\nelements after reversing the array are:");
+    for(i=0;i<*n-1;i++)
+      printf("%d ",a[i]);
+}
