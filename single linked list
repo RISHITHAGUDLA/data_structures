@@ -1,0 +1,168 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node* next;
+}*temp,*newnode;
+struct node *head=NULL;
+struct node* tail=NULL;
+int value;
+int *p,count;
+void create()
+{
+    int a;
+    do
+    {
+        
+        newnode=(struct node*)malloc(sizeof(struct node));
+        printf("enter the value");
+        scanf("%d",&value);
+        newnode->data=value;
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else{
+           tail->next=newnode;
+           tail=newnode;
+        }
+        printf("enter a value other than to 0 to continue");
+        scanf("%d",&a);
+    }while(a!=0);
+}
+void display()
+{
+    printf("the linked list created is:");
+   temp=head;
+   while(temp->next!=NULL)
+   {
+   printf("%d ",temp->data);
+   temp=temp->next;
+   }
+   printf("%d ",temp->data);
+}
+void insertatbeg()
+{
+    newnode=(struct node*)malloc(sizeof(struct node));
+     printf("enter the value");
+        scanf("%d",&value);
+        newnode->data=value;
+    newnode->next=head;
+    head=newnode;
+}
+void insertatend()
+{
+    newnode=(struct node*)malloc(sizeof(struct node));
+     printf("enter the value");
+        scanf("%d",&value);
+        newnode->data=value;
+        newnode->next=NULL;
+        tail->next=newnode;
+        tail=newnode;
+}
+void insertatpos()
+{int pos,i;
+    newnode=(struct node*)malloc(sizeof(struct node));
+     printf("enter the value");
+        scanf("%d",&value);
+        printf("enter a position to insert");
+        scanf("%d",&pos);
+        newnode->data=value;
+        temp=head;
+        for(i=0;i<pos-1;i++)
+        temp=temp->next;
+        newnode->next=temp->next;
+        temp->next=newnode;
+}
+void deleteatbeg()
+{
+    temp=head;
+    head=temp->next;
+    temp->next=NULL;
+}
+void deleteatend()
+{
+    temp=head;
+    while(temp->next!=tail)
+    {
+        temp=temp->next;
+    }
+    temp->next=NULL;
+}
+void delatpos()
+{int pos,i;
+temp=head;
+   printf("enter the position to delete");
+   scanf("%d",&pos);
+   for(i=0;i<pos-1;i++)
+   temp=temp->next;
+   temp->next=temp->next->next;
+}
+void c()
+{
+count=1;
+p=&count;
+temp=head;
+while(temp!=tail)
+{
+temp=temp->next;
+(*p)++;
+}
+printf("the no of nodes of linked list are:%d", count);
+}
+void rev()
+{
+int a[10],i;
+temp=head;
+for(i=0;i<count-1;i++)
+{
+while(temp->next!=NULL)
+{
+a[i]=temp->data;
+break;
+}
+temp=temp->next;
+continue;
+}
+a[count-1]=temp->data;
+printf("the elements after reversing tha linked list are:");
+for(i=count-1;i>=0;i--)
+printf("%d ",a[i]);
+}
+void main()
+{
+    int r;
+    create();
+    display();
+    printf("enter\n1:insert at beginning\n2:insert at ending\n3:insert at a certain position\n4:delete at beginning\n5:delete at ending\n6:delete at a specified position\n");
+    scanf("%d",&r);
+    switch(r)
+    {
+    case 1:insertatbeg();
+           display();
+           break;
+    case 2:insertatend();
+           display();
+           break;
+    case 3:insertatpos();
+           display();
+           break;
+    case 4:deleteatbeg();
+           display();
+           break;
+    case 5:deleteatend();
+           display();
+           break;
+    case 6:delatpos();
+           display();
+           break;   
+    case 7:c();
+           display();
+           break;
+    case 8:rev();
+           display();
+           break;
+    }
+}
