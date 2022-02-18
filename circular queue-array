@@ -1,0 +1,120 @@
+#include<stdio.h>
+#define max 6
+int f,r,c=0;
+int q[max];
+void enqueue()
+{
+int val;
+if(c==max)
+printf("queue is filled\n");
+else
+{
+printf("enter the value to insert");
+scanf("%d",&val);
+q[r]=val;
+r=(r+1)%max;
+c++;
+}
+}
+void dequeue()
+{
+if(c==-1)
+printf("deletion cannot be performed");
+else
+{
+printf("dequeued element is %d",q[f]);
+f=(f+1)%max;
+c--;
+}
+}    
+void display()
+{
+int i;
+printf("queue is:");
+ if(f==r)
+        {
+        for(i=0;i<max;i++)
+                printf("%d ",q[i]);
+        }
+        else if(r>f)
+        {
+                for(i=f;i<r;i++)
+                        printf("%d ",q[i]);
+        }
+        else if(c!=max&&r<f)
+        {
+                for(i=0;i<r;i++)
+                        printf("%d ",q[i]);
+                for(i=f;i<max;i++)
+                        printf("%d ",q[i]);
+        }
+}
+
+void main()
+{
+f=r=0;
+int ch,a=1;
+while(a!=0)
+{
+printf("enter your choice:\n1:enqueue\n2:dequeue");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:enqueue();
+        break;
+ case 2:dequeue();
+        break;
+}
+printf("enter any number to continue");
+scanf("%d",&a);
+}
+display();
+}
+
+
+op:
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert1
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert2
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert3
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert4
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue2
+dequeued element is 1enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert5
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert6
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+enter the value to insert7
+enter any number to continue1
+enter your choice:
+1:enqueue
+2:dequeue1
+queue is filled
+enter any number to continue0
+queue is:7 2 3 4 5 6
