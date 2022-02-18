@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node* next;
+}*newnode,*temp;
+struct node* s[10];
+void create()
+{
+int i,val,a;
+for(i=0;i<10;i++)
+s[i]=0;
+do
+{
+newnode=(struct node*)malloc(sizeof(struct node));
+printf("enter value");
+scanf("%d",&val);
+newnode->data=val;
+newnode->next=NULL;
+i=val%10;
+if(s[i]==0)
+s[i]=newnode;
+else if(s[i]!=0)
+{
+temp=s[i];
+while(temp->next!=0)
+temp=temp->next;
+temp->next=newnode;
+}
+printf("enter any number(only 10 numbers allowed) to continue");
+scanf("%d",&a);
+}while(a!=0);
+}
+void display()
+{
+int i;
+for(i=0;i<10;i++)
+{
+temp=s[i];
+while(temp!=NULL)
+{
+printf("%d\n",temp->data);
+temp=temp->next;
+}
+}
+}
+void main()
+{
+create();
+display();
+}
