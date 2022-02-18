@@ -1,0 +1,56 @@
+ #include<stdio.h>
+#include<stdlib.h>
+int top=0;
+#define n 10
+int s[n];
+void push()
+{
+int val, i;
+if(top==n)
+printf("stack overload");
+    else
+{
+printf("enter element into the stack");
+scanf("%d",&val);
+s[top]=val;
+top=top+1;
+}
+}
+void pop()
+{
+if(top<0)
+printf("stack underflow");
+else
+{
+printf("%d",s[top]);
+top=top-1;
+}
+}
+void display()
+{
+int i;
+for(i=top-1;i>=0;i--)
+{
+printf("%d",s[i]);
+
+}
+}
+void main()
+{
+int ch,a=1;
+while(a!=0)
+{
+printf("enter your choice:\n1:push\n2:pop\n");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:push();
+       break;
+case 2:pop();
+       break;
+}
+printf("enter any numb to continue other than 0");
+scanf("%d",&a);
+}
+display();
+}
