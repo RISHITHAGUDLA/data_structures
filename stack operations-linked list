@@ -1,0 +1,96 @@
+#include<stdio.h>
+struct node{
+int data;
+struct node* next;
+}*temp,*top,*newnode;
+struct node* head=NULL;
+struct node* tail=NULL;
+void push()
+{
+int val;
+newnode=(struct node*)malloc(sizeof(struct node));
+printf("enter the value");
+scanf("%d",&val);
+newnode->data=val;
+newnode->next=NULL;
+if(head==NULL)
+{
+head=newnode;
+tail=newnode;
+}
+else
+{
+tail->next=newnode;
+tail=newnode;
+top=newnode;
+}
+}
+void pop()
+{
+temp=head;
+while(temp->next!=top)
+{
+temp=temp->next;
+}
+printf("popped element is %d\n",top->data);
+tail=temp;
+top=temp;
+top->next=NULL;
+}
+void display()
+{
+temp=head;
+while(temp->next!=NULL)
+{
+printf("%d",temp->data);
+temp=temp->next;
+}
+printf("%d",temp->data);
+}
+void main()
+{
+int ch,a=1;
+while(a!=0)
+{
+printf("enter 1:push\n2:pop\n");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:push();
+      break;
+case 2:pop();
+      break;
+}
+printf("enter any number to continue other than 0");
+scanf("%d",&a);
+}
+display();
+}
+
+op:
+enter 1:push
+2:pop
+1
+enter the value2
+enter any number to continue other than 01
+enter 1:push
+2:pop
+1
+enter the value3
+enter any number to continue other than 01
+enter 1:push
+2:pop
+1
+enter the value4
+enter any number to continue other than 01
+enter 1:push
+2:pop
+1
+enter the value5
+enter any number to continue other than 01
+enter 1:push
+2:pop
+2
+popped element is 5
+enter any number to continue other than 00
+234
